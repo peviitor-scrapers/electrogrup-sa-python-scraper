@@ -8,11 +8,11 @@
 [![API](https://img.shields.io/website?url=https%3A%2F%2Fapi.peviitor.ro%2F&label=api.peviitor.ro)](https://api.peviitor.ro/)
 [![GitHub Pages](https://img.shields.io/github/deployments/peviitor-scrapers/electrogrup-sa-python-scraper/github-pages?label=GitHub%20Pages)](https://peviitor-scrapers.github.io/electrogrup-sa-python-scraper/)
 
-# job_seeker_ro_spider — ELECTROGRUP SA Scraper (Python)
+# job_seeker_ro_spider — ELECTROGRUP SA Scraper
 
 **job_seeker_ro_spider** — un scraper pentru job-urile ELECTROGRUP SA din România. Extrage anunțurile de pe board-ul [applytojob](https://electrogrup.applytojob.com/apply/jobs/?department=ELECTROGRUP) și le publică în [peviitor.ro](https://peviitor.ro) prin API-ul Peviitor.
 
-> **🌱 Template repo.** Acest repo este **implementarea de referință** pentru toate scraper-ele Python din ecosistemul peviitor.ro. Alte scraper-e sunt derivate din acesta.
+> **🌱 Template repo.** Acest repo este **implementarea de referință** pentru toate scraper-ele Python din ecosistemul peviitor.ro. Alte scraper-e sunt derivate din acesta. Vezi [ai/AI-DERIVATION-GUIDE.md](ai/AI-DERIVATION-GUIDE.md).
 
 ## Overview
 
