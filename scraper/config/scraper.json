@@ -1,0 +1,6 @@
+{
+  "apiBase": "https://electrogrup.applytojob.com",
+  "apiPath": "/apply/jobs",
+  "department": "ELECTROGRUP",
+  "defaultLocation": "Cluj-Napoca"
+}

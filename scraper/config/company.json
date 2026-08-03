@@ -1,0 +1,10 @@
+{
+  "id": "9256208",
+  "company": "ELECTROGRUP SA",
+  "brand": "ELECTROGRUP",
+  "status": "activ",
+  "location": ["Cluj-Napoca"],
+  "website": ["https://electrogrup.ro"],
+  "career": ["https://electrogrup.applytojob.com/apply/jobs/"],
+  "scraperFile": "https://github.com/peviitor-scrapers/electrogrup-sa-python-scraper/actions/workflows/job-seeker-ro-spider.yml"
+}
