@@ -33,47 +33,6 @@ Proiectul automatizează colectarea zilnică a job-urilor ELECTROGRUP din Român
 - GitHub Actions: scrape zilnic + testare automată (unit, integration, e2e, consistency)
 - Se identifică prin User-Agent: `job_seeker_ro_spider`
 
-## Structura repo
-
-```
-.
-├── scraper/                    # codul scraperului
-│   ├── index.py                # punctul de intrare (python -m scraper.index)
-│   ├── api.py                  # client API peviitor v1 (firme/jobs)
-│   ├── anaf.py                 # validare companie via ANAF + fallback CUIScan
-│   ├── company.py              # logica de validare/pregătire companie
-│   ├── job_validator.py        # validare URL-uri de job (head/content/browser)
-│   ├── validate_jobs.py        # CLI: python -m scraper.validate_jobs
-│   ├── get_county.py           # oraș → județ
-│   ├── markdown_generator.py   # generață docs/jobs.md
-│   └── config/                 # sursa unică de adevăr (company.json, scraper.json)
-├── ai/                         # documentație pentru agenți AI
-├── tests/
-│   ├── unit/                   # teste unitare (mock HTTP)
-│   ├── integration/            # teste live (skip dacă rețeaua lipsește)
-│   ├── e2e/                    # scrape real al board-ului
-│   └── consistency/            # identitate repo, workflow-uri, root files
-├── docs/
-│   ├── index.html              # GitHub Pages
-│   ├── jobs.md                 # lista joburilor scrape-ate
-│   └── company.json            # copie a configului companiei
-└── .github/workflows/          # CI/CD
-```
-
-## Rulare
-
-```bash
-python3 -m pip install -r requirements.txt
-python3 -m scraper.index
-```
-
-## Testare
-
-```bash
-python3 -m pytest tests/unit tests/consistency
-python3 -m pytest tests/e2e          # necesită acces la board
-```
-
 ## License
 
 Copyright (c) 2024-2026 BOGA SEBASTIAN-NICOLAE
