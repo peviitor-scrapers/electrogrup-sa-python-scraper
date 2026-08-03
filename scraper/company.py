@@ -27,9 +27,21 @@ def _is_active(status):
 
 
 def validate_and_get_company(cif=None, cached=None):
-    """Validates company status via ANAF and returns normalized data."""
+    """Validates company status via ANAF and returns normalized data.
+
+    Falls back to the committed company config when both ANAF APIs are
+    unreachable, so scheduled scrapes do not fail on network hiccups.
+    """
     cif = cif or company_config["id"]
-    company = get_company_data(cif, cached=cached)
+    try:
+        company = get_company_data(cif, cached=cached)
+    except RuntimeError:
+        company = {
+            "cif": cif,
+            "denumire": company_config["company"],
+            "adresa": ", ".join(company_config.get("location") or []),
+            "stareInregistrare": "INREGISTRAT" if company_config["status"] == "activ" else "INACTIV",
+        }
 
     company_name = company.get("denumire")
     if not company_name:

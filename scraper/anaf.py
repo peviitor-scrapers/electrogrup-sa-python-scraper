@@ -31,7 +31,10 @@ CACHE_FILE = pathlib.Path(__file__).resolve().parent / "anaf_cache.json"
 def _fetch_json(url, **kwargs):
     res = requests.get(url, headers=HEADERS, timeout=10, **kwargs)
     res.raise_for_status()
-    return res.json()
+    data = res.json()
+    if isinstance(data, dict) and data.get("error"):
+        raise RuntimeError(f"API error for {url}: {data.get('error')}")
+    return data
 
 
 def _read_cache():
@@ -121,14 +124,8 @@ def search_company(brand_name):
 # ============================================================================
 
 def get_company_from_anaf(cif):
-    """Fetches company data for a CIF from demoanaf.ro, falling back to cuiscan.ro."""
-    try:
-        data = _fetch_json(f"{ANAF_API_URL}{cif}")
-        if data and data.get("denumire"):
-            return _normalize_company(data)
-    except Exception:
-        pass
-
+    """Fetches company data for a CIF, trying cuiscan.ro first (demoanaf.ro now
+    requires payment). Falls back to demoanaf.ro and then cached data."""
     try:
         data = _fetch_json(f"{CUISCAN_API_URL}?action=company&cui={cif}")
         if data and data.get("denumire"):
@@ -141,6 +138,13 @@ def get_company_from_anaf(cif):
                 "codCaen": str(data.get("codCaen") or ""),
                 "dataInregistrare": data.get("dataInregistrare"),
             }
+    except Exception:
+        pass
+
+    try:
+        data = _fetch_json(f"{ANAF_API_URL}{cif}")
+        if data and data.get("denumire"):
+            return _normalize_company(data)
     except Exception:
         pass
 

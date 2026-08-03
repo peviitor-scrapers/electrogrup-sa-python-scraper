@@ -5,22 +5,8 @@ from unittest import mock
 from scraper import anaf
 
 
-def test_get_company_from_anaf_demoanaf(mock_get):
-    mock_get.return_value.status_code = 200
-    mock_get.return_value.json.return_value = {
-        "denumire": "ELECTROGRUP SA", "cif": "9256208",
-        "adresa": "CLUJ-NAPOCA", "stareInregistrare": "INREGISTRAT",
-    }
-    company = anaf.get_company_from_anaf("9256208")
-    assert company["denumire"] == "ELECTROGRUP SA"
-    assert company["stareInregistrare"] == "INREGISTRAT"
-
-
-def test_get_company_from_anaf_cuiscan_fallback(mock_get):
-    mock_get.return_value.status_code = 500
-    mock_get.return_value.raise_for_status.side_effect = Exception("http")
+def test_get_company_from_anaf_cuiscan_first(mock_get):
     mock_get.side_effect = [
-        mock.Mock(status_code=500, raise_for_status=mock.Mock(side_effect=Exception("http"))),
         mock.Mock(status_code=200, json=lambda: {
             "denumire": "ELECTROGRUP SA", "cui": "9256208",
             "adresa": "CLUJ-NAPOCA", "activ": True}),
@@ -28,6 +14,29 @@ def test_get_company_from_anaf_cuiscan_fallback(mock_get):
     company = anaf.get_company_from_anaf("9256208")
     assert company["denumire"] == "ELECTROGRUP SA"
     assert company["stareInregistrare"] == "INREGISTRAT"
+
+
+def test_get_company_from_anaf_demoanaf_fallback(mock_get):
+    mock_get.side_effect = [
+        mock.Mock(status_code=500, raise_for_status=mock.Mock(side_effect=Exception("http"))),
+        mock.Mock(status_code=200, json=lambda: {
+            "denumire": "ELECTROGRUP SA", "cif": "9256208",
+            "adresa": "CLUJ-NAPOCA", "stareInregistrare": "INREGISTRAT"}),
+    ]
+    company = anaf.get_company_from_anaf("9256208")
+    assert company["denumire"] == "ELECTROGRUP SA"
+    assert company["stareInregistrare"] == "INREGISTRAT"
+
+
+def test_get_company_from_anaf_skips_payment_error(mock_get):
+    mock_get.side_effect = [
+        mock.Mock(status_code=200, json=lambda: {"error": "payment_required", "accepts": []}),
+        mock.Mock(status_code=200, json=lambda: {
+            "denumire": "ELECTROGRUP SA", "cui": "9256208",
+            "adresa": "CLUJ-NAPOCA", "activ": True}),
+    ]
+    company = anaf.get_company_from_anaf("9256208")
+    assert company["denumire"] == "ELECTROGRUP SA"
 
 
 def test_get_company_from_anaf_returns_none_on_total_failure(mock_get):
@@ -56,3 +65,12 @@ def test_search_anofm_empty_on_error(mock_post):
 def test_search_anofm_non_200(mock_post):
     mock_post.return_value.status_code = 500
     assert anaf.search_anofm("9256208") == []
+
+
+def test_validate_and_get_company_falls_back_to_config(monkeypatch):
+    from scraper import company
+    monkeypatch.setattr(company, "get_company_data", lambda *a, **k: (_ for _ in ()).throw(RuntimeError("no api")))
+    result = company.validate_and_get_company()
+    assert result["company"] == "ELECTROGRUP SA"
+    assert result["cif"] == "9256208"
+    assert result["status"] == "active"
