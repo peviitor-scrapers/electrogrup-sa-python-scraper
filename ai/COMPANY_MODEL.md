@@ -10,7 +10,7 @@ Company document published to the peviitor company core (`/v1/firme/company/`).
 
 | Field        | Type   | Description                                                        |
 |--------------|--------|--------------------------------------------------------------------|
-| `id`         | string | CIF (8 digits, no RO prefix)                                       |
+| `id`         | string | CIF as-is from ANAF (no RO prefix); zero-padded to 8 digits by `scraper/api.py` when calling the peviitor API |
 | `company`    | string | Legal name from Trade Register (UPPERCASE, diacritics required)    |
 | `brand`      | string | Public brand name                                                  |
 | `group`      | string | Parent company group (optional)                                    |
@@ -30,10 +30,10 @@ Company document published to the peviitor company core (`/v1/firme/company/`).
 
 ## Upsert behavior
 
-`upsert_company` passes the CIF **as-is** (no zero-padding, per AGENTS.md
-commandment 2) and PUTs to `/v1/firme/company/add/`. The live
-address/location from ANAF (CUIScan) takes precedence over the static
-config when available.
+`upsert_company` zero-pads the CIF to 8 digits (`pad_cif`, because the
+peviitor API requires exactly 8 digits) and PUTs to `/v1/firme/company/add/`.
+The live address/location from ANAF (CUIScan) takes precedence over the
+static config when available.
 
 ## Example
 

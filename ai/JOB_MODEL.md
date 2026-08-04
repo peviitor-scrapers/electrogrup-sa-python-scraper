@@ -9,7 +9,7 @@ Standardized job document published to peviitor SOLR.
 | `url`           | yes      | Canonical job URL (valid HTTP/HTTPS)                               |
 | `title`         | yes      | Position title — max 200 chars, no HTML, trimmed whitespace        |
 | `company`       | no       | Company name (UPPERCASE, diacritics allowed)                       |
-| `cif`           | no       | Company CIF, as-is (8 digits, no zero-padding)                     |
+| `cif`           | no       | Company CIF, as-is (7–8 digits; zero-padded to 8 by the API layer) |
 | `location`      | no       | Array of Romanian cities (diacritics accepted)                     |
 | `tags`          | no       | Lowercase keywords, max 20 entries, NO diacritics                  |
 | `workmode`      | no       | `remote` / `on-site` / `hybrid`                                     |
