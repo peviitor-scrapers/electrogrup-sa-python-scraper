@@ -28,18 +28,13 @@ TIMEOUT = 10
 HEADERS = {"User-Agent": "job_seeker_ro_spider"}
 
 
-def pad_cif(cif):
-    """Zero-pads a CIF to exactly 8 digits (Peviitor API requirement)."""
-    return str(cif).zfill(8)
-
-
 # ============================================================================
 # COMPANY OPERATIONS
 # ============================================================================
 
 def get_company_by_cif(cif):
     """Searches for a company by CIF using the peviitor API."""
-    url = f"{API_BASE_URL}/firme/company/?cif={pad_cif(cif)}"
+    url = f"{API_BASE_URL}/firme/company/?cif={cif}"
     res = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     if res.status_code != 200:
         raise RuntimeError(f"API company search error: {res.status_code}")
@@ -65,7 +60,7 @@ def search_company_by_name(name):
 def upsert_company(company_doc):
     """Upserts a company document via the peviitor API."""
     url = f"{API_BASE_URL}/firme/company/add/"
-    payload = {**company_doc, "id": pad_cif(company_doc["id"])}
+    payload = {**company_doc, "id": company_doc["id"]}
     res = requests.put(
         url,
         json=payload,
@@ -86,7 +81,7 @@ def upsert_company(company_doc):
 
 def query_solr(cif):
     """Queries jobs from Solr by company CIF via the peviitor API."""
-    url = f"{API_BASE_URL}/scraper/jobs/?cif={pad_cif(cif)}&rows=500"
+    url = f"{API_BASE_URL}/scraper/jobs/?cif={cif}&rows=500"
     res = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     if res.status_code != 200:
         raise RuntimeError(f"API jobs query error: {res.status_code} - {res.text}")
@@ -106,7 +101,7 @@ def delete_jobs_by_cif(cif):
     url = f"{API_BASE_URL}/scraper/jobs/delete/"
     res = requests.delete(
         url,
-        json={"cif": pad_cif(cif)},
+        json={"cif": cif},
         headers={**HEADERS, "Content-Type": "application/json"},
         timeout=TIMEOUT,
     )
@@ -141,10 +136,9 @@ def delete_job_by_url(url):
 def upsert_jobs(jobs):
     """Upserts (adds or updates) jobs via the peviitor API."""
     url = f"{API_BASE_URL}/scraper/jobs/upload/"
-    padded_jobs = [{**job, "cif": pad_cif(job["cif"])} for job in jobs]
     res = requests.post(
         url,
-        json=padded_jobs,
+        json=jobs,
         headers={**HEADERS, "Content-Type": "application/json"},
         timeout=TIMEOUT,
     )
@@ -159,10 +153,14 @@ def upsert_jobs(jobs):
 # ============================================================================
 
 def check_url(url):
-    """Performs a HEAD request and returns status info."""
+    """Performs a HEAD request and returns status info.
+
+    Redirects (3xx) are treated as invalid — closed jobs are redirected to the
+    jobs list instead of returning a real 404.
+    """
     try:
-        res = requests.head(url, headers=HEADERS, timeout=TIMEOUT, allow_redirects=True)
-        return {"url": url, "status": res.status_code, "valid": res.ok}
+        res = requests.head(url, headers=HEADERS, timeout=TIMEOUT, allow_redirects=False)
+        return {"url": url, "status": res.status_code, "valid": res.status_code == 200}
     except Exception as err:
         return {"url": url, "status": 0, "valid": False, "error": str(err)}
 
@@ -171,8 +169,13 @@ def check_url(url):
 # VERIFICATION WORKFLOW
 # ============================================================================
 
-def run_verification(cif):
-    """Checks existing jobs in SOLR, validates URLs, deletes invalid ones."""
+def run_verification(cif, delete=False, prefix=None):
+    """Checks existing jobs in SOLR and validates URLs.
+
+    Read-only by default. Deletion only happens when ``delete=True`` and
+    only for invalid URLs under ``prefix`` (e.g. our board URL prefix), so
+    jobs published by other scrapers under a shared CIF are never removed.
+    """
     print("=== Verify SOLR Jobs ===\n")
     result = query_solr(cif)
     print(f"Total jobs in SOLR for CIF {cif}: {result['numFound']}")
@@ -190,10 +193,45 @@ def run_verification(cif):
         if not res["valid"]:
             invalid_urls.append(job.get("url"))
 
-    if invalid_urls:
-        print(f"\n⚠️ {len(invalid_urls)} invalid URLs found - deleting via API...")
-        for url in invalid_urls:
-            delete_job_by_url(url)
-        print(f"✅ Deleted {len(invalid_urls)} invalid jobs via API")
-    else:
+    if not invalid_urls:
         print("\n✅ All URLs valid")
+        return
+
+    if not delete or not prefix:
+        print(f"\n⚠️ {len(invalid_urls)} invalid URL(s) — read-only, nothing deleted.")
+        print("Use --delete to remove invalid board URLs (scoped to the board prefix).")
+        return
+
+    deletable = [u for u in invalid_urls if u.startswith(prefix)]
+    skipped = [u for u in invalid_urls if not u.startswith(prefix)]
+    if skipped:
+        print(f"\n⚠️ Skipping {len(skipped)} invalid URL(s) from other sources (outside board prefix).")
+    if not deletable:
+        print("\n✅ No invalid board URLs to delete.")
+        return
+
+    print(f"\n⚠️ Deleting {len(deletable)} invalid board URL(s) via API...")
+    for url in deletable:
+        delete_job_by_url(url)
+    print(f"✅ Deleted {len(deletable)} invalid jobs via API")
+
+
+# ============================================================================
+# STANDALONE MODE
+# ============================================================================
+
+if __name__ == "__main__":
+    import argparse
+    import sys
+
+    from .config import scraper_config
+
+    parser = argparse.ArgumentParser(
+        description="Verify peviitor jobs for a CIF (read-only unless --delete)")
+    parser.add_argument("cif", help="Company CIF")
+    parser.add_argument("--delete", action="store_true",
+                        help="Delete invalid jobs under the board URL prefix")
+    args = parser.parse_args()
+
+    prefix = scraper_config.get("jobDetailsPrefix") or f"{scraper_config['apiBase']}/apply/jobs/details/"
+    run_verification(args.cif, delete=args.delete, prefix=prefix)

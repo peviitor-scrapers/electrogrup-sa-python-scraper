@@ -6,7 +6,7 @@ Generates docs/jobs.md after each scrape with company info and current jobs.
 
 import datetime
 
-_OPTIONAL_COMPANY_FIELDS = ("brand", "website", "career", "lastScraped", "scraperFile")
+_OPTIONAL_COMPANY_FIELDS = ("brand", "website", "career", "scraperFile")
 
 
 def _iso_timestamp():

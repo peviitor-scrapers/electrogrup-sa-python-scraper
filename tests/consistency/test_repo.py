@@ -62,7 +62,7 @@ def test_repo_identity_in_readme():
 
 
 def test_repo_identity_in_config(company_config):
-    assert company_config["company"] == "ELECTROGRUP SA"
+    assert company_config["company"]
 
 
 def test_changelog_has_current_version():

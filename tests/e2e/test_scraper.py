@@ -35,3 +35,4 @@ def test_scrape_real_board():
         assert job["title"]
     urls = {j["url"] for j in jobs}
     assert len(urls) == len(jobs), "duplicate job URLs found"
+    assert "ELECTROGRUP" in index.DEPARTMENT, "scraper should target the ELECTROGRUP department"

@@ -13,6 +13,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - ANOFM job search mirroring the Node.js template.
 - `validate_jobs.py` CLI for head/content URL validation.
 - Unit, integration, e2e, and consistency tests.
-- GitHub Actions workflows: `job-seeker-ro-spider`, `automation-testing`, deep-validate, recovery.
+- GitHub Actions workflows: `job-seeker-ro-spider`, `automation-testing`, deep-validate, recovery, template-sync-check.
 - GitHub Pages (`docs/`) with generated `jobs.md` and `company.json`.
 - AI documentation under `ai/`.
+
+### Fixed
+- Location normalization: common spellings (`Bucuresti`, `Turda`, etc.) and case/diacritic variants are no longer dropped to `România`.
+- Stale-job deletion is scoped to this scraper's applytojob board, so jobs published by other peviitor scrapers under the same CIF are never removed.
+- E2E `EXPECTED_MIN_JOBS` and integration tests reflect the ELECTROGRUP department and CIF `9256208`.

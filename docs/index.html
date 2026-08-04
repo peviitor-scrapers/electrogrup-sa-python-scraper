@@ -328,6 +328,14 @@ const i18n = {
     jobsEmpty: "Loading...",
     jobsMd: "Jobs MD",
     testResults: "Test Results",
+    cif: "CIF",
+    brand: "Brand",
+    status: "Status",
+    cities: "Cities",
+    website: "Website",
+    career: "Career",
+    lastScrape: "Last scrape",
+    activeStatus: "active",
   },
   ro: {
     pageTitle: "Locuri de muncă — peviitor.ro",
@@ -346,6 +354,14 @@ const i18n = {
     jobsEmpty: "Se încarcă...",
     jobsMd: "Jobs MD",
     testResults: "Rezultate Teste",
+    cif: "CIF",
+    brand: "Brand",
+    status: "Status",
+    cities: "Orașe",
+    website: "Website",
+    career: "Career",
+    lastScrape: "Ultimul scrape",
+    activeStatus: "activ",
   }
 };
 
@@ -389,15 +405,18 @@ async function loadStats() {
     const cData = await cRes.json();
     const comp = cData.company;
     if (comp) {
+      const lang = document.documentElement.lang || "ro";
+      const t = i18n[lang] || i18n.ro;
+      const statusValue = comp.status === "activ" ? t.activeStatus : comp.status;
       const grid = document.getElementById("companyDetails");
       grid.innerHTML = `
-        <div class="company-item"><strong>CIF:</strong> ${comp.id}</div>
-        <div class="company-item"><strong>Brand:</strong> ${comp.brand}</div>
-        <div class="company-item"><strong>Status:</strong> ${comp.status}</div>
-        <div class="company-item"><strong>Orașe:</strong> ${(comp.location || []).join(", ") || "—"}</div>
-        <div class="company-item"><strong>Website:</strong> <a href="${(comp.website || [])[0] || "#"}" target="_blank">${(comp.website || [])[0] || "—"}</a></div>
-        <div class="company-item"><strong>Career:</strong> <a href="${(comp.career || [])[0] || "#"}" target="_blank">${(comp.career || [])[0] || "—"}</a></div>
-        <div class="company-item"><strong>Ultimul scrape:</strong> ${comp.lastScraped || "—"}</div>
+        <div class="company-item"><strong>${t.cif}:</strong> ${comp.id}</div>
+        <div class="company-item"><strong>${t.brand}:</strong> ${comp.brand}</div>
+        <div class="company-item"><strong>${t.status}:</strong> ${statusValue}</div>
+        <div class="company-item"><strong>${t.cities}:</strong> ${(comp.location || []).join(", ") || "—"}</div>
+        <div class="company-item"><strong>${t.website}:</strong> <a href="${(comp.website || [])[0] || "#"}" target="_blank">${(comp.website || [])[0] || "—"}</a></div>
+        <div class="company-item"><strong>${t.career}:</strong> <a href="${(comp.career || [])[0] || "#"}" target="_blank">${(comp.career || [])[0] || "—"}</a></div>
+        <div class="company-item"><strong>${t.lastScrape}:</strong> ${comp.lastScraped || "—"}</div>
       `;
 
       window.__companyName = comp.company || COMPANY;
@@ -408,11 +427,21 @@ async function loadStats() {
   }
 
   try {
-    const vRes = await fetch(`https://api.peviitor.ro/v1/search/?company=${encodeURIComponent(COMPANY)}&status=verified&page=1`, {
-      headers: { origin: "https://peviitor.ro", referer: "https://peviitor.ro/" }
-    });
-    const vData = await vRes.json();
-    document.getElementById("verifiedCount").textContent = vData.response.numFound;
+    let verified = 0;
+    let vPage = 1;
+    while (true) {
+      const vRes = await fetch(`https://api.peviitor.ro/v1/search/?company=${encodeURIComponent(COMPANY)}&page=${vPage}`, {
+        headers: { origin: "https://peviitor.ro", referer: "https://peviitor.ro/" }
+      });
+      const vData = await vRes.json();
+      const vDocs = vData.response?.docs || [];
+      if (vDocs.length === 0) break;
+      vDocs.forEach((doc) => {
+        if (doc.cif === COMPANY_CIF && doc.status !== "expired") verified++;
+      });
+      vPage++;
+    }
+    document.getElementById("verifiedCount").textContent = verified;
   } catch { document.getElementById("verifiedCount").textContent = "?"; }
 
   const now = new Date();

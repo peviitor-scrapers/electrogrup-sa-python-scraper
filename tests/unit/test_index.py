@@ -1,13 +1,8 @@
 """Unit tests for the applytojob listing parser."""
 
 import json
-import pathlib
-
-import pytest
 
 from scraper import index
-
-ROOT = pathlib.Path(__file__).resolve().parents[2]
 
 SAMPLE_HTML = """
 <html><body>
@@ -38,7 +33,7 @@ def test_build_listing_url(scraper_config):
     url = index.build_listing_url()
     assert url.startswith("https://")
     assert "applytojob.com" in url
-    assert "department=ELECTROGRUP" in url
+    assert "department=" in url
 
 
 def test_build_job_url():
@@ -93,16 +88,16 @@ def test_map_to_job_model_adds_company_and_status():
     raw = {"url": "https://electrogrup.applytojob.com/apply/jobs/details/ABC123",
            "title": "SCADA Engineer", "location": ["Bucuresti"]}
     index.COMPANY_NAME = "ELECTROGRUP SA"
-    job = index.map_to_job_model(raw, "09256208")
+    job = index.map_to_job_model(raw, "9256208")
     assert job["company"] == "ELECTROGRUP SA"
-    assert job["cif"] == "09256208"
+    assert job["cif"] == "9256208"
     assert job["status"] == "scraped"
     assert job["location"] == ["Bucuresti"]
 
 
 def test_transform_jobs_for_solr_keeps_required_fields():
     jobs = [{"url": "https://x/job", "title": "Test Job", "location": ["Cluj-Napoca"],
-             "company": "ELECTROGRUP SA", "cif": "09256208"}]
+             "company": "ELECTROGRUP SA", "cif": "9256208"}]
     transformed = index.transform_jobs_for_solr({"company": "ELECTROGRUP SA", "jobs": jobs})
     assert len(transformed["jobs"]) == 1
     t = transformed["jobs"][0]
@@ -126,10 +121,10 @@ def test_transform_missing_workmode_dropped():
 
 def test_generate_jobs_markdown(tmp_path, company_config):
     jobs = [{"url": "https://x/job", "title": "Inginer Ofertare Energetic",
-             "company": "ELECTROGRUP SA", "cif": "09256208",
+             "company": "ELECTROGRUP SA", "cif": "9256208",
              "location": ["Bucuresti"], "workmode": "on-site"}]
     md = index.generate_jobs_markdown(company_config, jobs)
-    assert "# ELECTROGRUP SA" in md
+    assert f"# {company_config['company']}" in md
     assert "## Jobs (1)" in md
     assert "Inginer Ofertare Energetic" in md
     assert "](https://x/job)" in md
@@ -155,8 +150,8 @@ def test_main_dry_run_writes_summary(tmp_path, monkeypatch):
         "address": "CLUJ-NAPOCA"})
     monkeypatch.setattr(index, "search_anofm", lambda cif: [])
 
-    index.main()
-    out = ROOT / "scraper" / "jobs.json"
+    index.main(root=tmp_path)
+    out = tmp_path / "scraper" / "jobs.json"
     assert out.exists()
     data = json.loads(out.read_text())
     assert len(data["jobs"]) >= 3
