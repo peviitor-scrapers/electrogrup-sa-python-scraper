@@ -34,12 +34,12 @@ jobs:
         id: versions
         if: steps.template.outputs.repo != ''
         run: |
-          DERIVED=$(grep -m1 '^## \[' CHANGELOG.md | sed 's/## \[\(.*\)\]/\1/')
+          DERIVED=$(grep -m1 '^## \[' CHANGELOG.md | sed -E 's/^## \[([0-9.]+)\].*/\1/')
           echo "derived=${DERIVED}" >> "$GITHUB_OUTPUT"
 
           RAW=$(gh api "repos/${{ steps.template.outputs.repo }}/contents/CHANGELOG.md" \
             --jq '.content' | base64 -d)
-          TEMPLATE=$(echo "$RAW" | grep -m1 '^## \[' | sed 's/## \[\(.*\)\]/\1/')
+          TEMPLATE=$(echo "$RAW" | grep -m1 '^## \[' | sed -E 's/^## \[([0-9.]+)\].*/\1/')
           echo "template=${TEMPLATE}" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
