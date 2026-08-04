@@ -11,12 +11,13 @@ import json
 import pathlib
 import re
 import sys
+import time
 
 import requests
 from bs4 import BeautifulSoup
 
 from .anaf import search_anofm
-from .api import delete_job_by_url, query_solr, upsert_company, upsert_jobs
+from .api import delete_job_by_url, delete_jobs_by_cif, query_solr, upsert_company, upsert_jobs
 from .company import validate_and_get_company
 from .config import company_config, scraper_config
 from .markdown_generator import generate_jobs_markdown
@@ -30,6 +31,12 @@ API_PATH = scraper_config["apiPath"]
 DEPARTMENT = scraper_config["department"]
 
 COMPANY_NAME = None
+
+# Jobs stored in SOLR under this CIF may be published by other peviitor
+# scrapers (aggregators). Stale deletion must only ever touch jobs that this
+# scraper itself published (i.e. URLs on the group's applytojob board), so we
+# scope it to this prefix instead of the whole CIF.
+JOB_DETAILS_PREFIX = f"{API_BASE}/apply/jobs/details/"
 
 
 def build_listing_url():
@@ -124,7 +131,7 @@ def map_to_job_model(raw_job, cif, company_name=None):
 
 
 _ROMANIAN_CITIES = [
-    "Bucharest", "București", "Cluj-Napoca", "Cluj Napoca",
+    "Bucharest", "București", "Bucuresti", "Cluj-Napoca", "Cluj Napoca",
     "Timișoara", "Timisoara", "Iași", "Iasi", "Brașov", "Brasov",
     "Constanța", "Constanta", "Craiova", "Bacău", "Sibiu",
     "Târgu Mureș", "Targu Mures", "Oradea", "Baia Mare", "Satu Mare",
@@ -132,12 +139,25 @@ _ROMANIAN_CITIES = [
     "Brăila", "Braila", "Drobeta-Turnu Severin", "Râmnicu Vâlcea", "Ramnicu Valcea",
     "Buzău", "Buzau", "Botoșani", "Botosani", "Zalău", "Zalau", "Hunedoara", "Deva",
     "Suceava", "Bistrița", "Bistrita", "Tulcea", "Călărași", "Calarasi",
-    "Giurgiu", "Alba Iulia", "Slatina", "Piatra Neamț", "Piatra Neamt", "Roman",
+    "Giurgiu", "Alba Iulia", "Slatina", "Piatra Neamț", "Piatra Neamt",
+    "Piatra-Neamt", "Roman", "Turda", "Câmpia Turzii", "Campia Turzii",
+    "Medgidia", "Gura Ialomiței", "Gura Ialomitei",
     "Dumbrăvița", "Dumbravita", "Voluntari", "Popești-Leordeni", "Popesti-Leordeni",
     "Chitila", "Mogoșoaia", "Mogosoaia", "Otopeni",
 ]
 
-_CITY_SET = {c.lower() for c in _ROMANIAN_CITIES}
+_DIACRITIC_MAP = str.maketrans("ăâîșțĂÂÎȘȚ", "aaistAAIST")
+
+
+def _normalize_city(city):
+    """Normalizes a city name: lowercase, no diacritics, no hyphen/double spaces."""
+    if not city:
+        return ""
+    normalized = city.lower().translate(_DIACRITIC_MAP)
+    return " ".join(normalized.replace("-", " ").split())
+
+
+_CITY_SET = {_normalize_city(c) for c in _ROMANIAN_CITIES}
 
 
 def _normalize_workmode(workmode):
@@ -157,10 +177,13 @@ def transform_jobs_for_solr(payload):
 
     transformed_jobs = []
     for job in payload.get("jobs", []):
-        locations = [loc for loc in job.get("location") or []
-                     if loc.lower().strip() in ("romania", "românia")
-                     or loc.lower().strip() in _CITY_SET]
-        locations = ["România" if loc.lower() == "romania" else loc for loc in locations]
+        locations = []
+        for loc in job.get("location") or []:
+            normalized = _normalize_city(loc)
+            if normalized in ("romania", "românia"):
+                locations.append("România")
+            elif normalized in _CITY_SET:
+                locations.append(loc)
         new_job = {
             **job,
             "location": locations if locations else ["România"],
@@ -179,21 +202,28 @@ def scrape_all_listings():
     return parse_api_jobs(html)
 
 
-def main():
+def main(root=None):
     test_only_one_page = "--test" in sys.argv
+    root = root or pathlib.Path(__file__).resolve().parents[1]
 
     print("=== Step 1: Get existing jobs from SOLR ===")
     existing_result = query_solr(COMPANY_CIF)
     existing_count = existing_result["numFound"]
-    existing_urls = {doc.get("url") for doc in existing_result["docs"] if doc.get("url")}
-    print(f"Found {existing_count} existing jobs in SOLR")
+    existing_urls = {doc.get("url") for doc in existing_result["docs"]
+                     if doc.get("url") and doc["url"].startswith(JOB_DETAILS_PREFIX)}
+    print(f"Found {existing_count} existing jobs in SOLR ({len(existing_urls)} from this board)")
 
     print("=== Step 2: Validate company via ANAF ===")
     validated = validate_and_get_company()
     global COMPANY_NAME
     COMPANY_NAME = validated["company"]
     if validated["status"] == "inactive":
-        print("⚠️ Company is INACTIVE — jobs deleted, skipping scrape.")
+        print("⚠️ Company is INACTIVE — deleting jobs and skipping scrape.")
+        try:
+            delete_jobs_by_cif(validated["cif"])
+            print(f"✅ Deleted all jobs for CIF {validated['cif']}")
+        except Exception as del_err:
+            print(f"⚠️ Failed to delete jobs for CIF {validated['cif']}: {del_err}")
         return
 
     try:
@@ -201,7 +231,7 @@ def main():
             "id": validated["cif"],
             "company": validated["company"],
             "brand": company_config.get("brand"),
-            "status": "activ" if validated["status"] == "active" else "activ",
+            "status": "activ",
             "location": [validated["address"]] if validated["address"] else company_config["location"],
             "website": company_config.get("website"),
             "career": company_config.get("career"),
@@ -213,7 +243,7 @@ def main():
 
     raw_jobs = scrape_all_listings()
     scraped_count = len(raw_jobs)
-    print(f"Jobs scraped from Electrogrup applytojob board: {scraped_count}")
+    print(f"Jobs scraped from the Electrogrup applytojob board: {scraped_count}")
 
     if not test_only_one_page:
         anofm_jobs = search_anofm(validated["cif"])
@@ -222,6 +252,7 @@ def main():
         for job in anofm_jobs:
             if job["url"] not in known_urls:
                 raw_jobs.append(job)
+                known_urls.add(job["url"])
         print(f"Jobs added from ANOFM: {anofm_count}")
 
     jobs = [map_to_job_model(job, validated["cif"]) for job in raw_jobs]
@@ -239,8 +270,12 @@ def main():
     valid_count = len([j for j in transformed_payload["jobs"] if j.get("location")])
     print(f"Jobs with valid Romanian locations: {valid_count}")
 
-    root = pathlib.Path(__file__).resolve().parents[1]
-    (root / "scraper" / "jobs.json").write_text(
+    root = root or pathlib.Path(__file__).resolve().parents[1]
+
+    # jobs.json
+    jobs_path = root / "scraper" / "jobs.json"
+    jobs_path.parent.mkdir(parents=True, exist_ok=True)
+    jobs_path.write_text(
         json.dumps(transformed_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print("Saved scraper/jobs.json")
 
@@ -259,7 +294,7 @@ def main():
     (root / "docs" / "jobs.md").write_text(markdown, encoding="utf-8")
     print("Saved docs/jobs.md")
 
-    src_company = root / "scraper" / "config" / "company.json"
+    src_company = pathlib.Path(__file__).resolve().parent / "config" / "company.json"
     (root / "docs" / "company.json").write_text(src_company.read_text(encoding="utf-8"), encoding="utf-8")
     print("Copied scraper/config/company.json → docs/company.json")
 
@@ -284,10 +319,11 @@ def main():
         print("\n✅ No stale jobs to delete")
 
     print("\n=== Step 5: Summary ===")
+    time.sleep(2)
     final_result = query_solr(COMPANY_CIF)
     print(f"\n=== SUMMARY ===")
     print(f"Jobs existing in SOLR before scrape: {existing_count}")
-    print(f"Jobs scraped from Electrogrup applytojob board: {scraped_count}")
+    print(f"Jobs scraped from the Electrogrup applytojob board: {scraped_count}")
     print(f"Stale jobs attempted: {len(stale_urls)}")
     print(f"Jobs in SOLR after scrape: {final_result['numFound']}")
     print(f"====================")

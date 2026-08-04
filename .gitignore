@@ -16,6 +16,9 @@ node_modules/
 scraper/jobs.json
 scraper/anaf_cache.json
 
+# Temporary files
+tmp/
+
 # Editors / OS
 .vscode/
 .idea/

@@ -4,9 +4,10 @@ ANAF Company Data Module
 Fetches and validates company data from Romanian public registries.
 
 Strategy:
-- get_company_from_anaf: 1 try demoanaf.ro → 1 try cuiscan.ro.
+- get_company_from_anaf: 1 try cuiscan.ro → 1 try demoanaf.ro (demoanaf now
+  requires payment, so cuiscan.ro is tried first).
 - search_company: 1 try demoanaf.ro → 1 try cuifirma.ro.
-- get_company_from_anaf_with_fallback: demoanaf/cuiscan → cached data.
+- get_company_from_anaf_with_fallback: cuiscan/demoanaf → cached data.
 """
 
 import json

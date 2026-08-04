@@ -20,6 +20,14 @@ def test_validate_by_head_expired(mock_head):
     assert result["http_status"] == 404
 
 
+def test_validate_by_head_redirect_is_expired(mock_head):
+    mock_head.return_value.ok = True
+    mock_head.return_value.status_code = 302
+    result = validate_by_head("https://x/job")
+    assert result["status"] == "expired"
+    assert result["http_status"] == 302
+
+
 def test_validate_by_head_error(mock_head):
     mock_head.side_effect = Exception("timeout")
     result = validate_by_head("https://x/job")
@@ -45,6 +53,15 @@ def test_validate_by_content_non_200(mock_get):
     mock_get.return_value.ok = False
     result = validate_by_content("https://x/job")
     assert result["status"] == "expired"
+
+
+def test_validate_by_content_redirect_is_expired(mock_get):
+    mock_get.return_value.status_code = 302
+    mock_get.return_value.ok = True
+    mock_get.return_value.text = "<html>jobs list</html>"
+    result = validate_by_content("https://x/job")
+    assert result["status"] == "expired"
+    assert result["http_status"] == 302
 
 
 def test_validate_by_content_error(mock_get):

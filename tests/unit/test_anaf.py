@@ -67,10 +67,10 @@ def test_search_anofm_non_200(mock_post):
     assert anaf.search_anofm("9256208") == []
 
 
-def test_validate_and_get_company_falls_back_to_config(monkeypatch):
+def test_validate_and_get_company_falls_back_to_config(monkeypatch, company_config):
     from scraper import company
     monkeypatch.setattr(company, "get_company_data", lambda *a, **k: (_ for _ in ()).throw(RuntimeError("no api")))
     result = company.validate_and_get_company()
-    assert result["company"] == "ELECTROGRUP SA"
-    assert result["cif"] == "9256208"
+    assert result["company"] == company_config["company"]
+    assert result["cif"] == company_config["id"]
     assert result["status"] == "active"
