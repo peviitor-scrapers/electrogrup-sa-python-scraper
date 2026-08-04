@@ -12,6 +12,7 @@ def test_query_solr_returns_docs(mock_get):
     result = api.query_solr("9256208")
     assert result["numFound"] == 2
     assert result["docs"] == [{"url": "u1"}]
+    assert "cif=09256208" in mock_get.call_args.args[0]
 
 
 def test_query_solr_throws_on_http_error(mock_get):
@@ -29,12 +30,12 @@ def test_query_solr_missing_data_returns_empty(mock_get):
     assert result["docs"] == []
 
 
-def test_upsert_jobs_keeps_cif(mock_post):
+def test_upsert_jobs_pads_cif(mock_post):
     mock_post.return_value.status_code = 200
     mock_post.return_value.json.return_value = {"success": True, "count": 1}
     api.upsert_jobs([{"url": "u", "cif": "9256208"}])
     sent = mock_post.call_args.kwargs["json"]
-    assert sent[0]["cif"] == "9256208"
+    assert sent[0]["cif"] == "09256208"
 
 
 def test_upsert_jobs_throws_on_http_error(mock_post):
@@ -63,12 +64,12 @@ def test_delete_job_by_url_throws_on_http_error(mock_delete):
         api.delete_job_by_url("https://example.com/job")
 
 
-def test_upsert_company_keeps_id(mock_put):
+def test_upsert_company_pads_id(mock_put):
     mock_put.return_value.status_code = 200
     mock_put.return_value.json.return_value = {"success": True}
     api.upsert_company({"id": "9256208", "company": "ELECTROGRUP SA"})
     sent = mock_put.call_args.kwargs["json"]
-    assert sent["id"] == "9256208"
+    assert sent["id"] == "09256208"
 
 
 def test_upsert_company_throws_on_http_error(mock_put):

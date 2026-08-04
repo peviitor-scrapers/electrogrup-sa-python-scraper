@@ -12,7 +12,7 @@ template and must follow the same API contract.
 ## Commandments
 
 1. **Never** call Solr directly — use the peviitor v1 API only.
-2. Company CIFs are used **as-is** — never zero-pad or transform them.
+2. Company CIFs are stored **as-is** in config (never transformed); `scraper/api.py` zero-pads to 8 digits at the API boundary, because the peviitor API requires exactly 8 digits.
 3. Use `User-Agent: job_seeker_ro_spider`.
 4. Edit `scraper/config/company.json` — it is the single source of truth.
 5. Run `python3 -m pytest tests/unit tests/consistency` before pushing.

@@ -28,13 +28,18 @@ TIMEOUT = 10
 HEADERS = {"User-Agent": "job_seeker_ro_spider"}
 
 
+def pad_cif(cif):
+    """Zero-pads a CIF to exactly 8 digits (Peviitor API requirement)."""
+    return str(cif).zfill(8)
+
+
 # ============================================================================
 # COMPANY OPERATIONS
 # ============================================================================
 
 def get_company_by_cif(cif):
     """Searches for a company by CIF using the peviitor API."""
-    url = f"{API_BASE_URL}/firme/company/?cif={cif}"
+    url = f"{API_BASE_URL}/firme/company/?cif={pad_cif(cif)}"
     res = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     if res.status_code != 200:
         raise RuntimeError(f"API company search error: {res.status_code}")
@@ -60,7 +65,7 @@ def search_company_by_name(name):
 def upsert_company(company_doc):
     """Upserts a company document via the peviitor API."""
     url = f"{API_BASE_URL}/firme/company/add/"
-    payload = {**company_doc, "id": company_doc["id"]}
+    payload = {**company_doc, "id": pad_cif(company_doc["id"])}
     res = requests.put(
         url,
         json=payload,
@@ -81,7 +86,7 @@ def upsert_company(company_doc):
 
 def query_solr(cif):
     """Queries jobs from Solr by company CIF via the peviitor API."""
-    url = f"{API_BASE_URL}/scraper/jobs/?cif={cif}&rows=500"
+    url = f"{API_BASE_URL}/scraper/jobs/?cif={pad_cif(cif)}&rows=500"
     res = requests.get(url, headers=HEADERS, timeout=TIMEOUT)
     if res.status_code != 200:
         raise RuntimeError(f"API jobs query error: {res.status_code} - {res.text}")
@@ -101,7 +106,7 @@ def delete_jobs_by_cif(cif):
     url = f"{API_BASE_URL}/scraper/jobs/delete/"
     res = requests.delete(
         url,
-        json={"cif": cif},
+        json={"cif": pad_cif(cif)},
         headers={**HEADERS, "Content-Type": "application/json"},
         timeout=TIMEOUT,
     )
@@ -136,9 +141,10 @@ def delete_job_by_url(url):
 def upsert_jobs(jobs):
     """Upserts (adds or updates) jobs via the peviitor API."""
     url = f"{API_BASE_URL}/scraper/jobs/upload/"
+    padded_jobs = [{**job, "cif": pad_cif(job["cif"])} for job in jobs]
     res = requests.post(
         url,
-        json=jobs,
+        json=padded_jobs,
         headers={**HEADERS, "Content-Type": "application/json"},
         timeout=TIMEOUT,
     )
