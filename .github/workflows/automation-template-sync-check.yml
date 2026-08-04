@@ -19,13 +19,16 @@ jobs:
         run: |
           TEMPLATE=$(gh api "repos/${{ github.repository }}" \
             --jq '.template_repository.full_name // empty')
+          if [ -z "$TEMPLATE" ]; then
+            echo "No template_repository metadata — using e-infra as the template."
+            TEMPLATE="ale23yfm/e-infra-sa-python-scraper"
+          fi
           echo "repo=${TEMPLATE}" >> "$GITHUB_OUTPUT"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Not a derived repo
-        if: steps.template.outputs.repo == ''
-        run: echo "This repo is a template (not derived). Skipping."
+      - name: Template target
+        run: echo "Tracking template ${{ steps.template.outputs.repo }}"
 
       - name: Fetch versions
         id: versions
