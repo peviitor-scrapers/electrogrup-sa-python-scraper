@@ -8,9 +8,9 @@
 | Brand | ELECTROGRUP |
 | Website | https://electrogrup.ro |
 | Career | https://electrogrup.applytojob.com/apply/jobs/ |
-| LastScraped | 2026-09-25 |
+| LastScraped | 2026-09-26 |
 
-## Jobs (70)
+## Jobs (69)
 
 ### Inginer Ofertare Energetic
 
@@ -68,26 +68,20 @@
 
 ### Coordonator Proiecte Tehnice Energetice
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/FK5s7T2GTU](https://electrogrup.applytojob.com/apply/jobs/details/FK5s7T2GTU)
-- **Location**: Bucuresti
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/tLUUDZff3E](https://electrogrup.applytojob.com/apply/jobs/details/tLUUDZff3E)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Coordonator Proiecte Tehnice Energetice
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/tLUUDZff3E](https://electrogrup.applytojob.com/apply/jobs/details/tLUUDZff3E)
-- **Location**: Cluj-Napoca
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/FK5s7T2GTU](https://electrogrup.applytojob.com/apply/jobs/details/FK5s7T2GTU)
+- **Location**: Bucuresti
 - **Status**: scraped
 
 ### Document Controller
 
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/XtSSk9XqjR](https://electrogrup.applytojob.com/apply/jobs/details/XtSSk9XqjR)
 - **Location**: Cluj-Napoca
-- **Status**: scraped
-
-### Electrician
-
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/SznOkhYK1A](https://electrogrup.applytojob.com/apply/jobs/details/SznOkhYK1A)
-- **Location**: Sibiu
 - **Status**: scraped
 
 ### Electrician
@@ -110,14 +104,14 @@
 
 ### Inginer Calitate Electrice
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/diT9DEt6ix](https://electrogrup.applytojob.com/apply/jobs/details/diT9DEt6ix)
-- **Location**: Cluj-Napoca
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/z3QnnrwVZu](https://electrogrup.applytojob.com/apply/jobs/details/z3QnnrwVZu)
+- **Location**: Constanta
 - **Status**: scraped
 
 ### Inginer Calitate Electrice
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/z3QnnrwVZu](https://electrogrup.applytojob.com/apply/jobs/details/z3QnnrwVZu)
-- **Location**: Constanta
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/diT9DEt6ix](https://electrogrup.applytojob.com/apply/jobs/details/diT9DEt6ix)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Inginer Calitate Electrice
@@ -433,4 +427,4 @@
 - **Status**: scraped
 
 ---
-_Generated at 2026-09-25T11:26:48Z_
+_Generated at 2026-09-26T11:02:19Z_
