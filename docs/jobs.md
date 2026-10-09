@@ -8,9 +8,9 @@
 | Brand | ELECTROGRUP |
 | Website | https://electrogrup.ro |
 | Career | https://electrogrup.applytojob.com/apply/jobs/ |
-| LastScraped | 2026-10-08 |
+| LastScraped | 2026-10-09 |
 
-## Jobs (68)
+## Jobs (67)
 
 ### Inginer Ofertare Energetic
 
@@ -46,12 +46,6 @@
 
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/hYMaEbGyi0](https://electrogrup.applytojob.com/apply/jobs/details/hYMaEbGyi0)
 - **Location**: Cluj-Napoca
-- **Status**: scraped
-
-### Business Developer Energie & Infrastructura
-
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/mUKVjJrShV](https://electrogrup.applytojob.com/apply/jobs/details/mUKVjJrShV)
-- **Location**: Bucuresti
 - **Status**: scraped
 
 ### Construction Manager
@@ -421,4 +415,4 @@
 - **Status**: scraped
 
 ---
-_Generated at 2026-10-08T13:03:10Z_
+_Generated at 2026-10-09T12:49:39Z_
