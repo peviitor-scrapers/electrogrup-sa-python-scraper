@@ -8,9 +8,9 @@
 | Brand | ELECTROGRUP |
 | Website | https://electrogrup.ro |
 | Career | https://electrogrup.applytojob.com/apply/jobs/ |
-| LastScraped | 2026-10-19 |
+| LastScraped | 2026-10-20 |
 
-## Jobs (68)
+## Jobs (70)
 
 ### Inginer Ofertare Energetic
 
@@ -86,14 +86,14 @@
 
 ### Document Controller
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/XtSSk9XqjR](https://electrogrup.applytojob.com/apply/jobs/details/XtSSk9XqjR)
-- **Location**: Cluj-Napoca
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/UXR6FG3ce5](https://electrogrup.applytojob.com/apply/jobs/details/UXR6FG3ce5)
+- **Location**: Ploiesti
 - **Status**: scraped
 
 ### Document Controller
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/UXR6FG3ce5](https://electrogrup.applytojob.com/apply/jobs/details/UXR6FG3ce5)
-- **Location**: Ploiesti
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/XtSSk9XqjR](https://electrogrup.applytojob.com/apply/jobs/details/XtSSk9XqjR)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Electrician
@@ -104,20 +104,14 @@
 
 ### Expert HSE
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/INHYkVDC7w](https://electrogrup.applytojob.com/apply/jobs/details/INHYkVDC7w)
-- **Location**: Gura Ialomitei
-- **Status**: scraped
-
-### Expert HSE
-
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/buqwsVUNrI](https://electrogrup.applytojob.com/apply/jobs/details/buqwsVUNrI)
 - **Location**: Slatina
 - **Status**: scraped
 
 ### Expert HSE
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/EFdA7dYS6k](https://electrogrup.applytojob.com/apply/jobs/details/EFdA7dYS6k)
-- **Location**: Constanta
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/7fMR6EmvUy](https://electrogrup.applytojob.com/apply/jobs/details/7fMR6EmvUy)
+- **Location**: Medgidia
 - **Status**: scraped
 
 ### Expert HSE
@@ -128,8 +122,14 @@
 
 ### Expert HSE
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/7fMR6EmvUy](https://electrogrup.applytojob.com/apply/jobs/details/7fMR6EmvUy)
-- **Location**: Medgidia
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/EFdA7dYS6k](https://electrogrup.applytojob.com/apply/jobs/details/EFdA7dYS6k)
+- **Location**: Constanta
+- **Status**: scraped
+
+### Expert HSE
+
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/INHYkVDC7w](https://electrogrup.applytojob.com/apply/jobs/details/INHYkVDC7w)
+- **Location**: Gura Ialomitei
 - **Status**: scraped
 
 ### Expert HSE
@@ -164,14 +164,14 @@
 
 ### Inginer Calitate Electrice
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/yxJVqBAfHk](https://electrogrup.applytojob.com/apply/jobs/details/yxJVqBAfHk)
-- **Location**: Bucuresti
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/F9wmym3eLR](https://electrogrup.applytojob.com/apply/jobs/details/F9wmym3eLR)
+- **Location**: Iasi
 - **Status**: scraped
 
 ### Inginer Calitate Electrice
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/F9wmym3eLR](https://electrogrup.applytojob.com/apply/jobs/details/F9wmym3eLR)
-- **Location**: Iasi
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/yxJVqBAfHk](https://electrogrup.applytojob.com/apply/jobs/details/yxJVqBAfHk)
+- **Location**: Bucuresti
 - **Status**: scraped
 
 ### Inginer Calitate Electrice
@@ -284,20 +284,26 @@
 
 ### Inspector HSE
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/HdECiB7i6b](https://electrogrup.applytojob.com/apply/jobs/details/HdECiB7i6b)
-- **Location**: Bucuresti
-- **Status**: scraped
-
-### Inspector HSE
-
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/Ax50fK0JMk](https://electrogrup.applytojob.com/apply/jobs/details/Ax50fK0JMk)
 - **Location**: Iasi
 - **Status**: scraped
 
-### Maistru Constructii
+### Inspector HSE
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/TZGZ8dG1Gv](https://electrogrup.applytojob.com/apply/jobs/details/TZGZ8dG1Gv)
-- **Location**: Constanta
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/HdECiB7i6b](https://electrogrup.applytojob.com/apply/jobs/details/HdECiB7i6b)
+- **Location**: Bucuresti
+- **Status**: scraped
+
+### Junior Cost Controller
+
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/5ysPmhtUeN](https://electrogrup.applytojob.com/apply/jobs/details/5ysPmhtUeN)
+- **Location**: Bucuresti
+- **Status**: scraped
+
+### Junior Cost Controller
+
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/kK8m5M59oh](https://electrogrup.applytojob.com/apply/jobs/details/kK8m5M59oh)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Maistru Constructii
@@ -306,16 +312,10 @@
 - **Location**: Cluj-Napoca
 - **Status**: scraped
 
-### Maistru Electrician
+### Maistru Constructii
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/p08iYLdimZ](https://electrogrup.applytojob.com/apply/jobs/details/p08iYLdimZ)
-- **Location**: Slatina
-- **Status**: scraped
-
-### Maistru Electrician
-
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/K0hITWlMwW](https://electrogrup.applytojob.com/apply/jobs/details/K0hITWlMwW)
-- **Location**: Cluj-Napoca
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/TZGZ8dG1Gv](https://electrogrup.applytojob.com/apply/jobs/details/TZGZ8dG1Gv)
+- **Location**: Constanta
 - **Status**: scraped
 
 ### Maistru Electrician
@@ -326,20 +326,32 @@
 
 ### Maistru Electrician
 
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/p08iYLdimZ](https://electrogrup.applytojob.com/apply/jobs/details/p08iYLdimZ)
+- **Location**: Slatina
+- **Status**: scraped
+
+### Maistru Electrician
+
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/OBw94ug3Cy](https://electrogrup.applytojob.com/apply/jobs/details/OBw94ug3Cy)
 - **Location**: Constanta
 - **Status**: scraped
 
-### Manager Ofertare Energetic
+### Maistru Electrician
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/YjibMiDSEA](https://electrogrup.applytojob.com/apply/jobs/details/YjibMiDSEA)
-- **Location**: Bucuresti
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/K0hITWlMwW](https://electrogrup.applytojob.com/apply/jobs/details/K0hITWlMwW)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Manager Ofertare Energetic
 
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/5yKSQ5mIaE](https://electrogrup.applytojob.com/apply/jobs/details/5yKSQ5mIaE)
 - **Location**: Cluj-Napoca
+- **Status**: scraped
+
+### Manager Ofertare Energetic
+
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/YjibMiDSEA](https://electrogrup.applytojob.com/apply/jobs/details/YjibMiDSEA)
+- **Location**: Bucuresti
 - **Status**: scraped
 
 ### Operator Utilaje (Buldoexcavator)
@@ -368,7 +380,7 @@
 
 ### Project Manager
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/JJ4hfaOnDT](https://electrogrup.applytojob.com/apply/jobs/details/JJ4hfaOnDT)
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/2Gq9LtI6UI](https://electrogrup.applytojob.com/apply/jobs/details/2Gq9LtI6UI)
 - **Location**: Bucuresti
 - **Status**: scraped
 
@@ -386,14 +398,14 @@
 
 ### Sef Santier Lucrări Electrice
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/ylKdpNFrus](https://electrogrup.applytojob.com/apply/jobs/details/ylKdpNFrus)
-- **Location**: Bucuresti
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/F5z4OkEHKK](https://electrogrup.applytojob.com/apply/jobs/details/F5z4OkEHKK)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Sef Santier Lucrări Electrice
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/F5z4OkEHKK](https://electrogrup.applytojob.com/apply/jobs/details/F5z4OkEHKK)
-- **Location**: Cluj-Napoca
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/ylKdpNFrus](https://electrogrup.applytojob.com/apply/jobs/details/ylKdpNFrus)
+- **Location**: Bucuresti
 - **Status**: scraped
 
 ### Specialist Achizitii
@@ -421,4 +433,4 @@
 - **Status**: scraped
 
 ---
-_Generated at 2026-10-19T12:33:41Z_
+_Generated at 2026-10-20T11:08:19Z_
