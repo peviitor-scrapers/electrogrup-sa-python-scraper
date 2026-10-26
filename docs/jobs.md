@@ -8,7 +8,7 @@
 | Brand | ELECTROGRUP |
 | Website | https://electrogrup.ro |
 | Career | https://electrogrup.applytojob.com/apply/jobs/ |
-| LastScraped | 2026-10-25 |
+| LastScraped | 2026-10-26 |
 
 ## Jobs (69)
 
@@ -427,4 +427,4 @@
 - **Status**: scraped
 
 ---
-_Generated at 2026-10-25T10:58:15Z_
+_Generated at 2026-10-26T12:30:15Z_
