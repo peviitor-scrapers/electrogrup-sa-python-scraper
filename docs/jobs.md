@@ -8,15 +8,9 @@
 | Brand | ELECTROGRUP |
 | Website | https://electrogrup.ro |
 | Career | https://electrogrup.applytojob.com/apply/jobs/ |
-| LastScraped | 2026-11-03 |
+| LastScraped | 2026-11-04 |
 
-## Jobs (70)
-
-### Inginer Ofertare Energetic
-
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/bL6rHPpidb](https://electrogrup.applytojob.com/apply/jobs/details/bL6rHPpidb)
-- **Location**: Bucuresti
-- **Status**: scraped
+## Jobs (68)
 
 ### Inginer Ofertare Energetic
 
@@ -24,16 +18,22 @@
 - **Location**: Cluj-Napoca
 - **Status**: scraped
 
-### SCADA Engineer
+### Inginer Ofertare Energetic
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/PVQhsUXFlR](https://electrogrup.applytojob.com/apply/jobs/details/PVQhsUXFlR)
-- **Location**: Cluj-Napoca
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/bL6rHPpidb](https://electrogrup.applytojob.com/apply/jobs/details/bL6rHPpidb)
+- **Location**: Bucuresti
 - **Status**: scraped
 
 ### SCADA Engineer
 
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/hovUA2LIdx](https://electrogrup.applytojob.com/apply/jobs/details/hovUA2LIdx)
 - **Location**: Bucharest
+- **Status**: scraped
+
+### SCADA Engineer
+
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/PVQhsUXFlR](https://electrogrup.applytojob.com/apply/jobs/details/PVQhsUXFlR)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Area Construction Manager
@@ -80,14 +80,14 @@
 
 ### Cost Controller
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/5ysPmhtUeN](https://electrogrup.applytojob.com/apply/jobs/details/5ysPmhtUeN)
-- **Location**: Bucuresti
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/kK8m5M59oh](https://electrogrup.applytojob.com/apply/jobs/details/kK8m5M59oh)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Cost Controller
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/kK8m5M59oh](https://electrogrup.applytojob.com/apply/jobs/details/kK8m5M59oh)
-- **Location**: Cluj-Napoca
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/5ysPmhtUeN](https://electrogrup.applytojob.com/apply/jobs/details/5ysPmhtUeN)
+- **Location**: Bucuresti
 - **Status**: scraped
 
 ### Document Controller
@@ -110,8 +110,8 @@
 
 ### Expert HSE
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/INHYkVDC7w](https://electrogrup.applytojob.com/apply/jobs/details/INHYkVDC7w)
-- **Location**: Gura Ialomitei
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/EFdA7dYS6k](https://electrogrup.applytojob.com/apply/jobs/details/EFdA7dYS6k)
+- **Location**: Constanta
 - **Status**: scraped
 
 ### Expert HSE
@@ -122,14 +122,14 @@
 
 ### Expert HSE
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/EFdA7dYS6k](https://electrogrup.applytojob.com/apply/jobs/details/EFdA7dYS6k)
-- **Location**: Constanta
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/r7tEaUfpRv](https://electrogrup.applytojob.com/apply/jobs/details/r7tEaUfpRv)
+- **Location**: Piatra-Neamt
 - **Status**: scraped
 
 ### Expert HSE
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/r7tEaUfpRv](https://electrogrup.applytojob.com/apply/jobs/details/r7tEaUfpRv)
-- **Location**: Piatra-Neamt
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/INHYkVDC7w](https://electrogrup.applytojob.com/apply/jobs/details/INHYkVDC7w)
+- **Location**: Gura Ialomitei
 - **Status**: scraped
 
 ### Expert HSE
@@ -146,13 +146,19 @@
 
 ### Inginer Calitate Civile
 
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/4Hx8ssFldb](https://electrogrup.applytojob.com/apply/jobs/details/4Hx8ssFldb)
+- **Location**: Cluj-Napoca
+- **Status**: scraped
+
+### Inginer Calitate Civile
+
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/eUrJcp8V7k](https://electrogrup.applytojob.com/apply/jobs/details/eUrJcp8V7k)
 - **Location**: Constanta
 - **Status**: scraped
 
 ### Inginer Calitate Electrice
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/F9wmym3eLR](https://electrogrup.applytojob.com/apply/jobs/details/F9wmym3eLR)
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/61Vl68k5RI](https://electrogrup.applytojob.com/apply/jobs/details/61Vl68k5RI)
 - **Location**: Iasi
 - **Status**: scraped
 
@@ -174,12 +180,6 @@
 - **Location**: Bucuresti
 - **Status**: scraped
 
-### Inginer Calitate Electrice
-
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/NRqMw8Lvh5](https://electrogrup.applytojob.com/apply/jobs/details/NRqMw8Lvh5)
-- **Location**: Cluj-Napoca
-- **Status**: scraped
-
 ### Inginer calitate instalatii
 
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/qjslVELwJw](https://electrogrup.applytojob.com/apply/jobs/details/qjslVELwJw)
@@ -194,14 +194,14 @@
 
 ### Inginer Implementare Electrice
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/DXLHzwvIPf](https://electrogrup.applytojob.com/apply/jobs/details/DXLHzwvIPf)
-- **Location**: Sibiu
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/b1I5LokK3w](https://electrogrup.applytojob.com/apply/jobs/details/b1I5LokK3w)
+- **Location**: Piatra-Neamt
 - **Status**: scraped
 
 ### Inginer Implementare Electrice
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/b1I5LokK3w](https://electrogrup.applytojob.com/apply/jobs/details/b1I5LokK3w)
-- **Location**: Piatra-Neamt
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/DXLHzwvIPf](https://electrogrup.applytojob.com/apply/jobs/details/DXLHzwvIPf)
+- **Location**: Sibiu
 - **Status**: scraped
 
 ### Inginer Implementare IT_MT
@@ -230,14 +230,14 @@
 
 ### Inginer Ofertare Regenerabile
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/LMxWN4v9hE](https://electrogrup.applytojob.com/apply/jobs/details/LMxWN4v9hE)
-- **Location**: Bucuresti
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/qYiMOOmNyb](https://electrogrup.applytojob.com/apply/jobs/details/qYiMOOmNyb)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Inginer Ofertare Regenerabile
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/qYiMOOmNyb](https://electrogrup.applytojob.com/apply/jobs/details/qYiMOOmNyb)
-- **Location**: Cluj-Napoca
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/LMxWN4v9hE](https://electrogrup.applytojob.com/apply/jobs/details/LMxWN4v9hE)
+- **Location**: Bucuresti
 - **Status**: scraped
 
 ### Inginer Proiectant Drumuri
@@ -248,19 +248,13 @@
 
 ### Inginer Proiectant Instalatii Secundare
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/cD3jA97IQS](https://electrogrup.applytojob.com/apply/jobs/details/cD3jA97IQS)
-- **Location**: Cluj-Napoca
-- **Status**: scraped
-
-### Inginer Proiectant Instalatii Secundare
-
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/B5YbGEBGbY](https://electrogrup.applytojob.com/apply/jobs/details/B5YbGEBGbY)
 - **Location**: Bucuresti
 - **Status**: scraped
 
-### Inginer Proiectare Constructii
+### Inginer Proiectant Instalatii Secundare
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/UGD5eq04pv](https://electrogrup.applytojob.com/apply/jobs/details/UGD5eq04pv)
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/cD3jA97IQS](https://electrogrup.applytojob.com/apply/jobs/details/cD3jA97IQS)
 - **Location**: Cluj-Napoca
 - **Status**: scraped
 
@@ -268,6 +262,12 @@
 
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/7LMwg2NYRW](https://electrogrup.applytojob.com/apply/jobs/details/7LMwg2NYRW)
 - **Location**: Bucuresti
+- **Status**: scraped
+
+### Inginer Proiectare Constructii
+
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/UGD5eq04pv](https://electrogrup.applytojob.com/apply/jobs/details/UGD5eq04pv)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Inginer Proiectare Instalatii Electrice Primare
@@ -284,14 +284,14 @@
 
 ### Inspector HSE
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/Ax50fK0JMk](https://electrogrup.applytojob.com/apply/jobs/details/Ax50fK0JMk)
-- **Location**: Iasi
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/HdECiB7i6b](https://electrogrup.applytojob.com/apply/jobs/details/HdECiB7i6b)
+- **Location**: Bucuresti
 - **Status**: scraped
 
 ### Inspector HSE
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/HdECiB7i6b](https://electrogrup.applytojob.com/apply/jobs/details/HdECiB7i6b)
-- **Location**: Bucuresti
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/Ax50fK0JMk](https://electrogrup.applytojob.com/apply/jobs/details/Ax50fK0JMk)
+- **Location**: Iasi
 - **Status**: scraped
 
 ### Maistru Constructii
@@ -308,8 +308,8 @@
 
 ### Maistru Electrician
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/p08iYLdimZ](https://electrogrup.applytojob.com/apply/jobs/details/p08iYLdimZ)
-- **Location**: Slatina
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/OBw94ug3Cy](https://electrogrup.applytojob.com/apply/jobs/details/OBw94ug3Cy)
+- **Location**: Constanta
 - **Status**: scraped
 
 ### Maistru Electrician
@@ -320,20 +320,8 @@
 
 ### Maistru Electrician
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/l4Jb4KxoHL](https://electrogrup.applytojob.com/apply/jobs/details/l4Jb4KxoHL)
-- **Location**: Gura Ialomitei
-- **Status**: scraped
-
-### Maistru Electrician
-
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/OBw94ug3Cy](https://electrogrup.applytojob.com/apply/jobs/details/OBw94ug3Cy)
-- **Location**: Constanta
-- **Status**: scraped
-
-### Manager Ofertare Energetic
-
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/DfbM8KYoFv](https://electrogrup.applytojob.com/apply/jobs/details/DfbM8KYoFv)
-- **Location**: Cluj-Napoca
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/ZfPQD84gcR](https://electrogrup.applytojob.com/apply/jobs/details/ZfPQD84gcR)
+- **Location**: România
 - **Status**: scraped
 
 ### Manager Ofertare Energetic
@@ -342,27 +330,21 @@
 - **Location**: Bucuresti
 - **Status**: scraped
 
-### Operator Utilaje (Buldoexcavator)
+### Manager Ofertare Energetic
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/V8H9oOQD7u](https://electrogrup.applytojob.com/apply/jobs/details/V8H9oOQD7u)
-- **Location**: Campia Turzii
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/DfbM8KYoFv](https://electrogrup.applytojob.com/apply/jobs/details/DfbM8KYoFv)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Operator Utilaje (Telehandler)
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/arqZhxkwLL](https://electrogrup.applytojob.com/apply/jobs/details/arqZhxkwLL)
-- **Location**: Campia Turzii
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/2cLSNuGqLu](https://electrogrup.applytojob.com/apply/jobs/details/2cLSNuGqLu)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Planner
 
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/xY0nXrAvcG](https://electrogrup.applytojob.com/apply/jobs/details/xY0nXrAvcG)
-- **Location**: Cluj-Napoca
-- **Status**: scraped
-
-### Project Controller Constructii Civile
-
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/QACN0kyEi6](https://electrogrup.applytojob.com/apply/jobs/details/QACN0kyEi6)
 - **Location**: Cluj-Napoca
 - **Status**: scraped
 
@@ -374,19 +356,25 @@
 
 ### Project Manager
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/2Gq9LtI6UI](https://electrogrup.applytojob.com/apply/jobs/details/2Gq9LtI6UI)
-- **Location**: Bucuresti
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/Xi15RAfMGY](https://electrogrup.applytojob.com/apply/jobs/details/Xi15RAfMGY)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Project Manager
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/Xi15RAfMGY](https://electrogrup.applytojob.com/apply/jobs/details/Xi15RAfMGY)
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/2Gq9LtI6UI](https://electrogrup.applytojob.com/apply/jobs/details/2Gq9LtI6UI)
+- **Location**: Bucuresti
+- **Status**: scraped
+
+### Responsabil Mecanizare Utilaje & Camioane
+
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/emjIAOcUh4](https://electrogrup.applytojob.com/apply/jobs/details/emjIAOcUh4)
 - **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Sef Santier Lucrari Constructii Civile
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/Z2cKB5CbZE](https://electrogrup.applytojob.com/apply/jobs/details/Z2cKB5CbZE)
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/vJ7Nqy4qti](https://electrogrup.applytojob.com/apply/jobs/details/vJ7Nqy4qti)
 - **Location**: Constanta
 - **Status**: scraped
 
@@ -416,7 +404,7 @@
 
 ### Sudor
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/yAOneiQrL6](https://electrogrup.applytojob.com/apply/jobs/details/yAOneiQrL6)
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/ih1qf5vWu6](https://electrogrup.applytojob.com/apply/jobs/details/ih1qf5vWu6)
 - **Location**: Cluj-Napoca
 - **Status**: scraped
 
@@ -433,4 +421,4 @@
 - **Status**: scraped
 
 ---
-_Generated at 2026-11-03T13:51:04Z_
+_Generated at 2026-11-04T13:58:02Z_
