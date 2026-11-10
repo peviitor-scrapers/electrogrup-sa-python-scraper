@@ -8,9 +8,9 @@
 | Brand | ELECTROGRUP |
 | Website | https://electrogrup.ro |
 | Career | https://electrogrup.applytojob.com/apply/jobs/ |
-| LastScraped | 2026-11-09 |
+| LastScraped | 2026-11-10 |
 
-## Jobs (70)
+## Jobs (69)
 
 ### Inginer Ofertare Energetic
 
@@ -100,12 +100,6 @@
 
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/UXR6FG3ce5](https://electrogrup.applytojob.com/apply/jobs/details/UXR6FG3ce5)
 - **Location**: Ploiesti
-- **Status**: scraped
-
-### Electrician
-
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/DwjtHXTKme](https://electrogrup.applytojob.com/apply/jobs/details/DwjtHXTKme)
-- **Location**: Medgidia
 - **Status**: scraped
 
 ### Expert HSE
@@ -433,4 +427,4 @@
 - **Status**: scraped
 
 ---
-_Generated at 2026-11-09T15:36:47Z_
+_Generated at 2026-11-10T14:32:42Z_
