@@ -8,9 +8,9 @@
 | Brand | ELECTROGRUP |
 | Website | https://electrogrup.ro |
 | Career | https://electrogrup.applytojob.com/apply/jobs/ |
-| LastScraped | 2026-11-19 |
+| LastScraped | 2026-11-20 |
 
-## Jobs (73)
+## Jobs (72)
 
 ### Inginer Ofertare Energetic
 
@@ -240,12 +240,6 @@
 - **Location**: Cluj-Napoca
 - **Status**: scraped
 
-### Inginer Mecanizare
-
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/Y20BkrZ8LY](https://electrogrup.applytojob.com/apply/jobs/details/Y20BkrZ8LY)
-- **Location**: Bucuresti
-- **Status**: scraped
-
 ### Inginer MEP
 
 - **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/Sg1zSUKJ4v](https://electrogrup.applytojob.com/apply/jobs/details/Sg1zSUKJ4v)
@@ -320,14 +314,14 @@
 
 ### Maistru Constructii
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/TZGZ8dG1Gv](https://electrogrup.applytojob.com/apply/jobs/details/TZGZ8dG1Gv)
-- **Location**: Medgidia
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/gXFZteuUSi](https://electrogrup.applytojob.com/apply/jobs/details/gXFZteuUSi)
+- **Location**: Cluj-Napoca
 - **Status**: scraped
 
 ### Maistru Constructii
 
-- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/gXFZteuUSi](https://electrogrup.applytojob.com/apply/jobs/details/gXFZteuUSi)
-- **Location**: Cluj-Napoca
+- **URL**: [https://electrogrup.applytojob.com/apply/jobs/details/TZGZ8dG1Gv](https://electrogrup.applytojob.com/apply/jobs/details/TZGZ8dG1Gv)
+- **Location**: Medgidia
 - **Status**: scraped
 
 ### Maistru Electrician
@@ -451,4 +445,4 @@
 - **Status**: scraped
 
 ---
-_Generated at 2026-11-19T15:27:16Z_
+_Generated at 2026-11-20T15:03:33Z_
